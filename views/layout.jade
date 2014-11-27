@@ -1,6 +1,8 @@
 doctype html
-html(lang="en")
+html(lang='en' ng-app='app')
     include ./partials/head.jade
     body
+        include ./partials/navigation.jade
         div.container
             block content
+    include ./partials/footer.jade

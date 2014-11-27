@@ -5,12 +5,18 @@ var express = require('express'),
     favicon = require('serve-favicon');
 
 module.exports = function(app) {
+    var publicFolder = path.join(process.cwd(), '/public');
 
     // Favicon
-    app.use(favicon(path.join(process.cwd(), '/public/favicon.ico')));
+    app.use(favicon(publicFolder + '/favicon.ico'));
+
+    // AngularJS Jade templates
+    app.get('/partials/:name', function(req, res){
+        res.render(publicFolder + '/partials/' + req.params.name);
+    });
 
     // Public files
-    app.use(express.static(path.join(process.cwd(), '/public')));
+    app.use(express.static(publicFolder));
 
     // App routes
     app.use('/', require('../routes/index'));
