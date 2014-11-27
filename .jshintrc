@@ -12,6 +12,7 @@
     "unused"        : false,
     "indent"        : 4,
     "globals": {
+        "angular"       : false,
         "it"            : false,
         "xit"           : false,
         "describe"      : false,
