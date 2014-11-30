@@ -4,19 +4,30 @@
 
     var app = angular.module('myapp', [
       'ngRoute',
-      'myapp-home'
+      'myapp-home',
+      'myapp-users'
     ]);
 
-    app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
+    app.config(['$routeProvider', function($routeProvider) {
 
         $routeProvider
             .when('/', {
                 templateUrl: '/partials/home.jade',
                 controller: 'HomeController',
                 controllerAs: 'home'
+            }).when('/users', {
+                templateUrl: '/partials/users.jade',
+                controller: 'UsersController',
+                controllerAs: 'users'
             });
 
     }]);
+
+    app.constant('config', {
+        api: {
+            url: 'http://127.0.0.1:8080'
+        }
+    });
 
     app.directive('navigation', function() {
         return {
@@ -28,6 +39,10 @@
                     {
                         name: 'Home',
                         url: '/'
+                    },
+                    {
+                        name: 'Users',
+                        url: '/users'
                     }
                 ];
 
