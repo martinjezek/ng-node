@@ -8,7 +8,7 @@
       'myapp-users'
     ]);
 
-    app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
+    app.config(['$routeProvider', function($routeProvider) {
 
         $routeProvider
             .when('/', {
@@ -22,6 +22,12 @@
             });
 
     }]);
+
+    app.constant('config', {
+        api: {
+            url: 'http://127.0.0.1:8080'
+        }
+    });
 
     app.directive('navigation', function() {
         return {
