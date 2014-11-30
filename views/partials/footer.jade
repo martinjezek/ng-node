@@ -1,7 +1,5 @@
-footer.footer.container
-    p &copy; Company #{new Date().getFullYear()}
-        = ' '
-        span.version= 'v' + session.app.version
-    //- div.debug
-        h2 Debug:
-        p #{JSON.stringify(locals)}
+footer.footer
+    div.container
+        p &copy; Company #{new Date().getFullYear()}
+            = ' '
+            span.version= 'v' + session.app.version

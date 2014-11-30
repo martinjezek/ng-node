@@ -8,6 +8,7 @@ nav.navbar-fixed-top {
 
 .body.container {
     padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 .jumbotron {
@@ -29,12 +30,17 @@ nav.navbar-fixed-top {
 }
 
 footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
     border-top: 1px solid #e7e7e7;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 7px 0px;
+    background: #f8f8f8;
 }
 
 footer p {
+    font-size: 11px;
     margin-bottom: 0px;
 }
 
@@ -42,14 +48,20 @@ footer .version {
     float: right;
 }
 
-footer .debug {
-    margin-top: 15px;
+.debug {
+    position: relative;
+    top: -30px;
     padding: 10px;
+    margin-bottom: 20px;
     font-size: 11px;
     background: #eaeaea;
 }
 
-footer h2 {
-    margin: 0px 0px 8px 0px;
+.debug h2 {
+    margin: 0px 0px 4px 0px;
     font-size: 14px;
+}
+
+.debug p {
+    margin-bottom: 0px;
 }
