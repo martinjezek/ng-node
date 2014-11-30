@@ -6,19 +6,17 @@ nav.navbar.navbar-default(role='navigation')
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            span.navbar-brand Users
+            span.navbar-brand Groups
         div#navbar.collapse.navbar-collapse
 
-div.alert.alert-info(ng-hide='users.list.length || users.loading') There is none of users.
+div.alert.alert-info(ng-hide='groups.list.length || groups.loading') There is none of groups.
 
-table.table.table-striped(ng-show='users.list.length')
+table.table.table-striped(ng-show='groups.list.length')
     thead
         tr
-            th.col-xs-4 Name
-            th.col-xs-4 Age
+            th.col-xs-8 Name
             th.col-xs-4 #
     tbody
-        tr(ng-repeat='user in users.list')
+        tr(ng-repeat='user in groups.list')
             td {{user.name}}
-            td {{user.age}}
             td {{user._id}}

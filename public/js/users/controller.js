@@ -8,9 +8,11 @@
         var self = this;
 
         this.list = [];
+        this.loading = true;
 
         $http.get(config.api.url + '/user').success(function(res) {
             self.list = res;
+            self.loading = false;
         });
     };
 
