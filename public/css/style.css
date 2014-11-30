@@ -26,3 +26,19 @@ footer {
 footer p {
     margin-bottom: 0px;
 }
+
+footer .version {
+    float: right;
+}
+
+footer .debug {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 11px;
+    background: #eaeaea;
+}
+
+footer h2 {
+    margin: 0px 0px 8px 0px;
+    font-size: 14px;
+}
