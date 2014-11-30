@@ -1,6 +1,17 @@
-h1 Users
+nav.navbar.navbar-default(role='navigation')
+    div.container
+        div.navbar-header
+            button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            span.navbar-brand Users
+        div#navbar.collapse.navbar-collapse
 
-table.table.table-striped
+div.alert.alert-info(ng-hide='users.list.length') There is none of users.
+
+table.table.table-striped(ng-show='users.list.length')
     thead
         tr
             th.col-xs-4 Name

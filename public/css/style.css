@@ -1,5 +1,13 @@
 body {
-    padding-top: 50px;
+    padding-top: 51px;
+}
+
+nav.navbar-fixed-top {
+    margin-bottom: 0px;
+}
+
+.body.container {
+    padding-top: 20px;
 }
 
 .jumbotron {
@@ -16,11 +24,14 @@ body {
     margin-bottom: 0px;
 }
 
+.row.boxes {
+    margin-bottom: 10px;
+}
+
 footer {
-    margin-top: 25px;
     border-top: 1px solid #e7e7e7;
-    padding-top: 17px;
-    padding-bottom: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 footer p {
