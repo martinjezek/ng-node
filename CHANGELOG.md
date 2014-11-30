@@ -1,3 +1,17 @@
+<a name="0.0.3"></a>
+### 0.0.3 (2014-11-30)
+
+
+#### Features
+
+* move footer to the bottom and tweak the jade debug console #17 ([fb65faf1](git@github.com:martinjezek/ng-node/commit/fb65faf1b676b42e73775c418d3529fcffbdf2eb))
+* add loading protection + add Groups controller, template, route #3 ([d3286dfb](git@github.com:martinjezek/ng-node/commit/d3286dfbb5b462e72ae915976c9a1ab3049705dc))
+* add app config + API http request for users #2 ([4cc18c45](git@github.com:martinjezek/ng-node/commit/4cc18c4543f6f5afc43cdd476c6a75b33b5194fb))
+* tweak main styles to make the app more consistent #2 ([c74e24dd](git@github.com:martinjezek/ng-node/commit/c74e24dd3f5d1e2089d39450ef19884d0295588a))
+* add Users controller, template, route #2 ([3b00e7c1](git@github.com:martinjezek/ng-node/commit/3b00e7c16b60ab61ad9a9afa3f330002988ac767))
+* add a Jade debug console, add an App version to footer, and tweak a year tag to  ([00490be7](git@github.com:martinjezek/ng-node/commit/00490be7175c175a72361b0ab8a86210438c1da9))
+
+
 ### 0.0.2 (2014-11-30)
 
 
