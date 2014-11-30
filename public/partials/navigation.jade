@@ -1,0 +1,3 @@
+ul.nav.navbar-nav(ng-repeat='item in navigation.items')
+    li(ng-class='{ active: navigation.isActive(item.url) }')
+        a(href='/#{{item.url}}') {{item.name}}
