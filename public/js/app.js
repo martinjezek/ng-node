@@ -4,7 +4,8 @@
 
     var app = angular.module('myapp', [
       'ngRoute',
-      'myapp-home'
+      'myapp-home',
+      'myapp-users'
     ]);
 
     app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
@@ -14,6 +15,10 @@
                 templateUrl: '/partials/home.jade',
                 controller: 'HomeController',
                 controllerAs: 'home'
+            }).when('/users', {
+                templateUrl: '/partials/users.jade',
+                controller: 'UsersController',
+                controllerAs: 'users'
             });
 
     }]);
@@ -28,6 +33,10 @@
                     {
                         name: 'Home',
                         url: '/'
+                    },
+                    {
+                        name: 'Users',
+                        url: '/users'
                     }
                 ];
 

@@ -1,0 +1,13 @@
+h1 Users
+
+table.table.table-striped
+    thead
+        tr
+            th.col-xs-4 Name
+            th.col-xs-4 Age
+            th.col-xs-4 #
+    tbody
+        tr(ng-repeat='user in users.list')
+            td {{user.name}}
+            td {{user.age}}
+            td {{user._id}}
