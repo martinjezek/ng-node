@@ -1,2 +1,7 @@
 footer.footer.container
-    p &copy; Company 2014
+    p &copy; Company #{new Date().getFullYear()}
+        = ' '
+        span.version= 'v' + session.app.version
+    //- div.debug
+        h2 Debug:
+        p #{JSON.stringify(locals)}

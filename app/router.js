@@ -18,6 +18,23 @@ module.exports = function(app) {
     // Public files
     app.use(express.static(publicFolder));
 
+    // App Version
+    app.use(function(req, res, next) {
+        if (!req.session.app) {
+            var pkg = require('../package.json');
+            req.session.app = {
+                version: pkg.version
+            };
+        }
+        next();
+    });
+
+    // Add Session to Jade templates
+    app.use(function(req, res, next) {
+        res.locals.session = req.session;
+        next();
+    });
+
     // App routes
     app.use('/', require('../routes/index'));
 
