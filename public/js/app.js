@@ -5,7 +5,8 @@
     var app = angular.module('myapp', [
       'ngRoute',
       'myapp-home',
-      'myapp-users'
+      'myapp-users',
+      'myapp-groups'
     ]);
 
     app.config(['$routeProvider', function($routeProvider) {
@@ -19,6 +20,10 @@
                 templateUrl: '/partials/users.jade',
                 controller: 'UsersController',
                 controllerAs: 'users'
+            }).when('/groups', {
+                templateUrl: '/partials/groups.jade',
+                controller: 'GroupsController',
+                controllerAs: 'groups'
             });
 
     }]);
@@ -43,6 +48,10 @@
                     {
                         name: 'Users',
                         url: '/users'
+                    },
+                    {
+                        name: 'Groups',
+                        url: '/groups'
                     }
                 ];
 
