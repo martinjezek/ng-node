@@ -1,10 +1,11 @@
 'use strict';
 
-var appControllers = angular.module('appControllers', []);
+(function(){
 
-appControllers.controller('Home', ['$scope',
-    function($scope) {
-        $scope.boxes = [
+    var app = angular.module('myapp-home', []);
+
+    var HomeController = function() {
+        this.boxes = [
             {
                 title: 'Latest',
                 description: 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.',
@@ -21,5 +22,8 @@ appControllers.controller('Home', ['$scope',
                 link: '/#/'
             }
         ];
-    }
-]);
+    };
+
+    app.controller('HomeController', HomeController);
+
+})();

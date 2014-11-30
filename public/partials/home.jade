@@ -1,10 +1,10 @@
-div.jumbotron.index
+div.jumbotron
     h1 Marketing stuff!
     p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.
     p
         a.btn.btn-lg.btn-success(href='/#/', role='button') Get started today
 div.row
-    div.col-lg-4(ng-repeat='box in boxes')
+    div.col-lg-4(ng-repeat='box in home.boxes')
         h2 {{box.title}}
         p {{box.description}}
         p

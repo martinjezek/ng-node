@@ -1,19 +1,22 @@
 'use strict';
 
-var app = angular.module('app', [
-  'ngRoute',
-  'appControllers'
-]);
+(function(){
 
-app.config(['$routeProvider',
-    function($routeProvider) {
+    var app = angular.module('myapp', [
+      'ngRoute',
+      'myapp-home'
+    ]);
+
+    app.config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/home.jade',
-                controller: 'Home'
+                controller: 'HomeController',
+                controllerAs: 'home'
             })
             .otherwise({
                 redirectTo: '/'
             });
-    }
-]);
+    }]);
+
+})();
