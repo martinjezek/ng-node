@@ -29,6 +29,14 @@ nav.navbar-fixed-top {
     margin-bottom: 10px;
 }
 
+.nav.navbar-right {
+    margin-right: 0px;
+}
+
+.modal-backdrop {
+    bottom: 0px;
+}
+
 footer {
     position: fixed;
     bottom: 0px;

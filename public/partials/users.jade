@@ -1,13 +1,18 @@
 nav.navbar.navbar-default(role='navigation')
     div.container
         div.navbar-header
-            button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#view-navbar', aria-expanded='false', aria-controls='navbar')
                 span.sr-only Toggle navigation
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
             span.navbar-brand Users
         div#navbar.collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(ng-click='users.createUser()', href='', role='button')
+                        span.glyphicon.glyphicon-plus
+                        = ' Create User'
 
 div.alert.alert-info(ng-hide='users.list.length || users.loading') There is none of users.
 
@@ -22,3 +27,12 @@ table.table.table-striped(ng-show='users.list.length')
             td {{user.name}}
             td {{user.age}}
             td {{user._id}}
+
+script(type='text/ng-template', id='create-user.ng')
+    div.modal-header
+        h3.modal-title Create User
+    div.modal-body
+        p FORM
+    div.modal-footer
+        button.btn.btn-default(ng-click='modal.cancel()') Cancel
+        button.btn.btn-primary(ng-click='modal.save()') Save

@@ -6,7 +6,9 @@
       'ngRoute',
       'myapp-home',
       'myapp-users',
-      'myapp-groups'
+      'myapp-groups',
+      'ui.bootstrap',
+      'ui.bootstrap.tpls'
     ]);
 
     app.config(['$routeProvider', function($routeProvider) {
