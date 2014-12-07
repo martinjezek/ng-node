@@ -8,15 +8,58 @@ nav.navbar.navbar-default(role='navigation')
                 span.icon-bar
             span.navbar-brand Groups
         div#navbar.collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(ng-click='createGroup()', href='', role='button')
+                        span.glyphicon.glyphicon-plus
+                        = ' Create Group'
 
-div.alert.alert-info(ng-hide='groups.list.length || groups.loading') There is none of groups.
+div.alert.alert-info(ng-hide='groups.length || loading') There is none of groups.
 
-table.table.table-striped(ng-show='groups.list.length')
+table.table.table-striped(ng-show='groups.length')
     thead
         tr
             th.col-xs-8 Name
-            th.col-xs-4 #
+            th.col-xs-3 #
+            th.col-xs-1
+
     tbody
-        tr(ng-repeat='user in groups.list')
-            td {{user.name}}
-            td {{user._id}}
+        tr(ng-repeat='group in groups')
+            td {{group.name}}
+            td {{group._id}}
+            td.text-right
+                button.btn.btn-xs.btn-default(ng-click='removeGroup(group)')
+                    span.glyphicon.glyphicon-remove
+
+//- Create Group /modal/
+//-
+script(type='text/ng-template', id='/modal-create-group.html')
+    form.form-horizontal(name='formCreateGroup', ng-submit='formCreateGroup.$valid && submit()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Create Group
+        div.modal-body
+            div.form-group(ng-class='{"has-error": formCreateGroup.name.$invalid && formCreateGroup.name.$dirty || formCreateGroup.name.$invalid && formCreateGroup.$submitted}')
+                label.control-label.col-sm-3(for='form-name') Name
+                div.col-sm-9
+                    input.form-control(ng-model='group.name', required, type='text', name='name', id='form-name', placeholder='Name')
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-primary(type='submit', value='Save')
+
+//- Remove Group /modal/
+//-
+script(type='text/ng-template', id='/modal-remove-group.html')
+    form.form-horizontal(name='formRemoveGroup', ng-submit='submit()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Remove Group
+        div.modal-body
+            p Are you sure to remove #[strong {{remove.name}}] group?
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-danger(type='submit', value='Remove')
