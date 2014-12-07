@@ -1,3 +1,15 @@
+<a name="0.0.4"></a>
+### 0.0.4 (2014-12-07)
+
+
+#### Features
+
+* add Group modals #5 ([4dbf7e99](git@github.com:martinjezek/ng-node/commit/4dbf7e999ac576fb56a1ba75df5cf9e81de4feb8))
+* add a user remove button #4 ([66851f8a](git@github.com:martinjezek/ng-node/commit/66851f8a694981ecd5348235f03dd17f1e51aa14))
+* implement angular-bs-modal and sort out creating a new user #4 ([1ffd605a](git@github.com:martinjezek/ng-node/commit/1ffd605af1e6d8dd3abd736ffd32c2c94eb6629d))
+* add a basic Modal Controller with template #4 ([044b22e2](git@github.com:martinjezek/ng-node/commit/044b22e24427b9e809ad5f66d2eb1e5c3f0e21e8))
+
+
 <a name="0.0.3"></a>
 ### 0.0.3 (2014-11-30)
 
