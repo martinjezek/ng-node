@@ -27,14 +27,34 @@
             });
         };
 
+        // remove user
+        $scope.removeUser = function (user) {
+            $scope.remove = user;
+            modal.open({
+                scope: $scope,
+                templateUrl: '/modal-remove-user.html',
+                controller: 'RemoveUserController'
+            });
+        };
+
     };
 
     var CreateUserController = function (config, $scope, $http, modalInstance) {
         $scope.user = {};
         $scope.onlyNumbers = /^\d+$/;
 
-        $scope.save = function () {
+        $scope.submit = function () {
             $http.post(config.api.url + '/user', $scope.user).success(function() {
+                $scope.fetchUsers();
+                modalInstance.close();
+            });
+        };
+    };
+
+    var RemoveUserController = function (config, $scope, $http, modalInstance) {
+        $scope.submit = function () {
+            $http.delete(config.api.url + '/user/' + $scope.remove._id).success(function() {
+                $scope.remove = null;
                 $scope.fetchUsers();
                 modalInstance.close();
             });
@@ -43,5 +63,6 @@
 
     app.controller('UsersController', UsersController);
     app.controller('CreateUserController', CreateUserController);
+    app.controller('RemoveUserController', RemoveUserController);
 
 })();

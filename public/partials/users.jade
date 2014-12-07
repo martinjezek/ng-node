@@ -21,17 +21,21 @@ table.table.table-striped(ng-show='users.length')
         tr
             th.col-xs-4 Name
             th.col-xs-4 Age
-            th.col-xs-4 #
+            th.col-xs-3 #
+            th.col-xs-1
     tbody
         tr(ng-repeat='user in users')
             td {{user.name}}
             td {{user.age}}
             td {{user._id}}
+            td.text-right
+                button.btn.btn-xs.btn-default(ng-click='removeUser(user)')
+                    span.glyphicon.glyphicon-remove
 
 //- Create User /modal/
 //-
 script(type='text/ng-template', id='/modal-create-user.html')
-    form.form-horizontal(name='formCreateUser', ng-submit='formCreateUser.$valid && save()', method='post', role='form', novalidate)
+    form.form-horizontal(name='formCreateUser', ng-submit='formCreateUser.$valid && submit()', method='post', role='form', novalidate)
         div.modal-header
             button.close(type='button', data-dismiss='modal')
                 span(aria-hidden='true') &times;
@@ -49,3 +53,18 @@ script(type='text/ng-template', id='/modal-create-user.html')
         div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             input.btn.btn-primary(type='submit', value='Save')
+
+//- Remove User /modal/
+//-
+script(type='text/ng-template', id='/modal-remove-user.html')
+    form.form-horizontal(name='formRemoveUser', ng-submit='submit()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Remove User
+        div.modal-body
+            p Are you sure to remove #[strong {{remove.name}}] user?
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-danger(type='submit', value='Remove')
