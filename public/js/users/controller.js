@@ -4,44 +4,40 @@
 
     var app = angular.module('myapp-users', []);
 
-    var UsersController = function (config, $http, $modal) {
-        var self = this;
+    var UsersController = function (config, $scope, $http, modal) {
 
-        // list users
-        this.list = [];
-        this.loading = true;
+        $scope.users = [];
 
-        $http.get(config.api.url + '/user').success(function(res) {
-            self.list = res;
-            self.loading = false;
-        });
+        // fetch users
+        $scope.fetchUsers = function () {
+            $scope.loading = true;
+            $http.get(config.api.url + '/user').success(function(res) {
+                $scope.users = res;
+                $scope.loading = false;
+            });
+        };
+        $scope.fetchUsers();
 
         // create user
-        this.createUser = function () {
-            var createModal = $modal.open({
-                templateUrl: 'create-user.ng',
-                controller: 'CreateUserController',
-                controllerAs: 'modal',
-                size: '',
-                resolve: {
-                items: function () {}
-                }
-            });
-
-            createModal.result.then(function () {
-
+        $scope.createUser = function () {
+            modal.open({
+                scope: $scope,
+                templateUrl: '/modal-create-user.html',
+                controller: 'CreateUserController'
             });
         };
 
     };
 
-    var CreateUserController = function ($modalInstance, items) {
-        this.save = function () {
-            $modalInstance.close();
-        };
+    var CreateUserController = function (config, $scope, $http, modalInstance) {
+        $scope.user = {};
+        $scope.onlyNumbers = /^\d+$/;
 
-        this.cancel = function () {
-            $modalInstance.dismiss('cancel');
+        $scope.save = function () {
+            $http.post(config.api.url + '/user', $scope.user).success(function() {
+                $scope.fetchUsers();
+                modalInstance.close();
+            });
         };
     };
 

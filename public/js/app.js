@@ -7,8 +7,7 @@
       'myapp-home',
       'myapp-users',
       'myapp-groups',
-      'ui.bootstrap',
-      'ui.bootstrap.tpls'
+      'angular.bs.modal'
     ]);
 
     app.config(['$routeProvider', function($routeProvider) {

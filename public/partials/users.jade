@@ -10,29 +10,42 @@ nav.navbar.navbar-default(role='navigation')
         div#navbar.collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-right
                 li
-                    a(ng-click='users.createUser()', href='', role='button')
+                    a(ng-click='createUser()', href='', role='button')
                         span.glyphicon.glyphicon-plus
                         = ' Create User'
 
-div.alert.alert-info(ng-hide='users.list.length || users.loading') There is none of users.
+div.alert.alert-info(ng-hide='users.length || loading') There is none of users.
 
-table.table.table-striped(ng-show='users.list.length')
+table.table.table-striped(ng-show='users.length')
     thead
         tr
             th.col-xs-4 Name
             th.col-xs-4 Age
             th.col-xs-4 #
     tbody
-        tr(ng-repeat='user in users.list')
+        tr(ng-repeat='user in users')
             td {{user.name}}
             td {{user.age}}
             td {{user._id}}
 
-script(type='text/ng-template', id='create-user.ng')
-    div.modal-header
-        h3.modal-title Create User
-    div.modal-body
-        p FORM
-    div.modal-footer
-        button.btn.btn-default(ng-click='modal.cancel()') Cancel
-        button.btn.btn-primary(ng-click='modal.save()') Save
+//- Create User /modal/
+//-
+script(type='text/ng-template', id='/modal-create-user.html')
+    form.form-horizontal(name='formCreateUser', ng-submit='formCreateUser.$valid && save()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Create User
+        div.modal-body
+            div.form-group(ng-class='{"has-error": formCreateUser.name.$invalid && formCreateUser.name.$dirty || formCreateUser.name.$invalid && formCreateUser.$submitted}')
+                label.control-label.col-sm-3(for='form-name') Name
+                div.col-sm-9
+                    input.form-control(ng-model='user.name', required, type='text', name='name', id='form-name', placeholder='Name')
+            div.form-group(ng-class='{"has-error": formCreateUser.age.$invalid && formCreateUser.age.$dirty || formCreateUser.age.$invalid && formCreateUser.$submitted}')
+                label.control-label.col-sm-3(for='form-age') Age
+                div.col-sm-9
+                    input.form-control(ng-model='user.age', ng-pattern='onlyNumbers', required, type='text', name='age', id='form-age', placeholder='Name')
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-primary(type='submit', value='Save')
