@@ -6,7 +6,8 @@
       'ngRoute',
       'myapp-home',
       'myapp-users',
-      'myapp-groups'
+      'myapp-groups',
+      'angular.bs.modal'
     ]);
 
     app.config(['$routeProvider', function($routeProvider) {

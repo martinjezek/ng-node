@@ -4,18 +4,65 @@
 
     var app = angular.module('myapp-users', []);
 
-    var UsersController = function(config, $http) {
-        var self = this;
+    var UsersController = function (config, $scope, $http, modal) {
 
-        this.list = [];
-        this.loading = true;
+        $scope.users = [];
 
-        $http.get(config.api.url + '/user').success(function(res) {
-            self.list = res;
-            self.loading = false;
-        });
+        // fetch users
+        $scope.fetchUsers = function () {
+            $scope.loading = true;
+            $http.get(config.api.url + '/user').success(function(res) {
+                $scope.users = res;
+                $scope.loading = false;
+            });
+        };
+        $scope.fetchUsers();
+
+        // create user
+        $scope.createUser = function () {
+            modal.open({
+                scope: $scope,
+                templateUrl: '/modal-create-user.html',
+                controller: 'CreateUserController'
+            });
+        };
+
+        // remove user
+        $scope.removeUser = function (user) {
+            $scope.remove = user;
+            modal.open({
+                scope: $scope,
+                templateUrl: '/modal-remove-user.html',
+                controller: 'RemoveUserController'
+            });
+        };
+
+    };
+
+    var CreateUserController = function (config, $scope, $http, modalInstance) {
+        $scope.user = {};
+        $scope.onlyNumbers = /^\d+$/;
+
+        $scope.submit = function () {
+            $http.post(config.api.url + '/user', $scope.user).success(function() {
+                $scope.fetchUsers();
+                modalInstance.close();
+            });
+        };
+    };
+
+    var RemoveUserController = function (config, $scope, $http, modalInstance) {
+        $scope.submit = function () {
+            $http.delete(config.api.url + '/user/' + $scope.remove._id).success(function() {
+                $scope.remove = null;
+                $scope.fetchUsers();
+                modalInstance.close();
+            });
+        };
     };
 
     app.controller('UsersController', UsersController);
+    app.controller('CreateUserController', CreateUserController);
+    app.controller('RemoveUserController', RemoveUserController);
 
 })();
