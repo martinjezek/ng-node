@@ -2,7 +2,11 @@
 
 (function(){
 
-    var app = angular.module('myapp-users', []);
+    var dependencies = [
+        'angular.bs.modal'
+    ];
+
+    var app = angular.module('app.users', dependencies);
 
     var UsersController = function (config, $scope, $http, modal) {
 

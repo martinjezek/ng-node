@@ -2,7 +2,11 @@
 
 (function(){
 
-    var app = angular.module('myapp-groups', []);
+    var dependencies = [
+        'angular.bs.modal'
+    ];
+
+    var app = angular.module('app.groups', dependencies);
 
     var GroupsController = function(config, $scope, $http, modal) {
 
