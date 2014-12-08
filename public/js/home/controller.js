@@ -2,7 +2,9 @@
 
 (function(){
 
-    var app = angular.module('myapp-home', []);
+    var dependencies = [];
+
+    var app = angular.module('app.home', dependencies);
 
     var HomeController = function() {
         this.boxes = [

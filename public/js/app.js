@@ -2,13 +2,14 @@
 
 (function(){
 
-    var app = angular.module('myapp', [
-      'ngRoute',
-      'myapp-home',
-      'myapp-users',
-      'myapp-groups',
-      'angular.bs.modal'
-    ]);
+    var dependencies = [
+        'ngRoute',
+        'app.home',
+        'app.users',
+        'app.groups'
+    ];
+
+    var app = angular.module('app', dependencies);
 
     app.config(['$routeProvider', function($routeProvider) {
 
