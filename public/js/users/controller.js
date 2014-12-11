@@ -69,4 +69,23 @@
     app.controller('CreateUserController', CreateUserController);
     app.controller('RemoveUserController', RemoveUserController);
 
+    // Detail
+
+    var UserDetailController = function (config, $scope, $routeParams, $http) {
+        $scope.user = {};
+
+        // fetch detail
+        $scope.fetchUser = function () {
+            $scope.loading = true;
+            $http.get(config.api.url + '/user/' + $routeParams.userId).success(function(res) {
+                $scope.user = res;
+                $scope.loading = false;
+            });
+        };
+        $scope.fetchUser();
+
+    };
+
+    app.controller('UserDetailController', UserDetailController);
+
 })();

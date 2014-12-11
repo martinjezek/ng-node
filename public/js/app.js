@@ -22,6 +22,9 @@
                 templateUrl: '/partials/users.jade',
                 controller: 'UsersController',
                 controllerAs: 'users'
+            }).when('/users/:userId', {
+                templateUrl: '/partials/user-detail.jade',
+                controller: 'UserDetailController'
             }).when('/groups', {
                 templateUrl: '/partials/groups.jade',
                 controller: 'GroupsController',
@@ -58,7 +61,11 @@
                 ];
 
                 this.isActive = function(url) {
-                    return url === $location.path();
+                    if (url == '/') {
+                        return url === $location.path();
+                    } else {
+                        return new RegExp('^' + url + '.?').test($location.path());
+                    }
                 };
 
             },

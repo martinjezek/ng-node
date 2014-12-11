@@ -6,6 +6,16 @@ nav.navbar-fixed-top {
     margin-bottom: 0px;
 }
 
+h1.navbar-brand {
+    margin: 0px;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 0px 0px 18px 0px;
+}
+
 .body.container {
     padding-top: 20px;
     padding-bottom: 30px;
@@ -26,6 +36,11 @@ nav.navbar-fixed-top {
 }
 
 .row.boxes {
+    margin-bottom: 10px;
+}
+
+.row.boxes h2 {
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
