@@ -11,7 +11,7 @@
 
     var app = angular.module('app', dependencies);
 
-    app.config(['$routeProvider', function($routeProvider) {
+    app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider
             .when('/', {
@@ -39,11 +39,11 @@
         }
     });
 
-    app.directive('navigation', function() {
+    app.directive('navigation', function () {
         return {
             restrict: 'E',
             templateUrl: '/partials/navigation.jade',
-            controller: function($location) {
+            controller: function ($location) {
 
                 this.items = [
                     {
@@ -70,6 +70,59 @@
 
             },
             controllerAs: 'navigation'
+        };
+    });
+
+    app.directive('editableField', function ($compile, $timeout) {
+        return {
+            restrict: 'E',
+            templateUrl: '/partials/editable-field.jade',
+            scope: {
+                value: '=value'
+            },
+            link: function ($scope, element, attrs) {
+                var input = element.find('input')[0],
+                    defaultValue = null;
+
+                // apply a form validator and the re-compile function
+                if (attrs.required) {
+                    $scope.required = true;
+                    angular.element(input).attr('required', true);
+                    $compile(element.contents())($scope);
+                }
+
+                // preset global and local active status
+                $scope.$parent.activeEditableField = false;
+                $scope.active = false;
+
+                $scope.click = function () {
+                    // allow only one active instance
+                    if (!$scope.$parent.activeEditableField) {
+                        // activate global and local status
+                        $scope.$parent.activeEditableField = true;
+                        $scope.active = true;
+                        // get a default value and focus the input
+                        defaultValue = $scope.value;
+                        $timeout(function() {
+                            input.focus();
+                        });
+                    }
+                };
+
+                $scope.blur = function () {
+                    if (angular.element(input).hasClass('ng-invalid')) {
+                        input.focus();
+                    } else {
+                        // deactivate global and local status
+                        $scope.$parent.activeEditableField = false;
+                        $scope.active = false;
+                        // return a change status, if hasn't been returned before with truthy status
+                        if (!$scope.$parent.changeEditableField) {
+                            $scope.$parent.changeEditableField = defaultValue !== $scope.value;
+                        }
+                    }
+                };
+            }
         };
     });
 

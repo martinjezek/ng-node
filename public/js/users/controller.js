@@ -84,6 +84,12 @@
         };
         $scope.fetchUser();
 
+        // save user changes
+        $scope.saveChanges = function () {
+            console.log('save', $scope.user);
+            $scope.changeEditableField = false;
+        };
+
     };
 
     app.controller('UserDetailController', UserDetailController);

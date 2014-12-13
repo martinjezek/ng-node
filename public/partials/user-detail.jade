@@ -9,10 +9,14 @@ div.row
             tbody
                 tr
                     th.col-xs-6 Name
-                    td.col-xs-6 {{user.name}}
+                    td.col-xs-6
+                        editable-field(value='user.name', required)
                 tr
                     th.col-xs-6 Age
-                    td.col-xs-6 {{user.age}}
+                    td.col-xs-6
+                        editable-field(value='user.age')
+        div.text-right
+            button.btn.btn-default(ng-show='changeEditableField', ng-click='saveChanges()', ng-class='{disabled: activeEditableField}') Save Changes
     div.col-sm-6
         h2 Groups
         div.alert.alert-info(ng-hide='users.groups.length || loading') User is not assigned to any group.
