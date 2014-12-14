@@ -85,9 +85,16 @@
                     defaultValue = null;
 
                 // apply a form validator and the re-compile function
-                if (attrs.required) {
-                    $scope.required = true;
-                    angular.element(input).attr('required', true);
+                if (attrs.required || attrs.ngPattern) {
+                    // required
+                    if (attrs.required) {
+                        angular.element(input).attr('required', true);
+                    }
+                    // regexp pattern
+                    if (attrs.ngPattern) {
+                        $scope[attrs.ngPattern] = $scope.$parent[attrs.ngPattern];
+                        angular.element(input).attr('ng-pattern', attrs.ngPattern);
+                    }
                     $compile(element.contents())($scope);
                 }
 

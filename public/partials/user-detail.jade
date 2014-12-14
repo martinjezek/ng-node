@@ -14,7 +14,7 @@ div.row
                 tr
                     th.col-xs-6 Age
                     td.col-xs-6
-                        editable-field(value='user.age')
+                        editable-field(value='user.age', required, ng-pattern='onlyNumbers')
         div.text-right
             button.btn.btn-default(ng-show='changeEditableField', ng-click='saveChanges()', ng-class='{disabled: activeEditableField}') Save Changes
     div.col-sm-6

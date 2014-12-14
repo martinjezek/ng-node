@@ -73,6 +73,7 @@
 
     var UserDetailController = function (config, $scope, $routeParams, $http) {
         $scope.user = {};
+        $scope.onlyNumbers = /^\d+$/;
 
         // fetch detail
         $scope.fetchUser = function () {
