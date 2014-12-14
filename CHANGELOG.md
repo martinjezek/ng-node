@@ -1,4 +1,17 @@
-<a name="0.0.4"></a>
+### 0.0.5 (2014-12-14)
+
+
+#### Features
+
+* add an assign and unassign groups to the user #6 ([e5b4e0d0](git@github.com:martinjezek/ng-node/commit/e5b4e0d0d2f82d01d568fdf4dc869c5cb3b55c2f))
+* save user changes #6 ([3aab2da6](git@github.com:martinjezek/ng-node/commit/3aab2da68267390664e6e900e973bef34c2d952b))
+* add a ng-pattern validator to EditableField directive #6 ([8644fa23](git@github.com:martinjezek/ng-node/commit/8644fa23a5f489dc8c07a2fc8eadeab66bd5b4ba))
+* add an EditableField directive #6 ([79febbe9](git@github.com:martinjezek/ng-node/commit/79febbe94cdb4527658b8f800df9f4cc2b6ebaa5))
+* improve html semantics #6 ([b6d58572](git@github.com:martinjezek/ng-node/commit/b6d58572d7cd6e6a83f9db267a1d65fd0f723769))
+* add an user detail Controller, Template and tweak a navigation Directive #6 ([81678cb3](git@github.com:martinjezek/ng-node/commit/81678cb35d2a7c6595decafe2fe46458c9b42cec))
+* dependencies refactoring #22 ([ada050b1](git@github.com:martinjezek/ng-node/commit/ada050b15ce344444c6847d49405dc9019ef02a4))
+
+
 ### 0.0.4 (2014-12-07)
 
 
@@ -10,7 +23,6 @@
 * add a basic Modal Controller with template #4 ([044b22e2](git@github.com:martinjezek/ng-node/commit/044b22e24427b9e809ad5f66d2eb1e5c3f0e21e8))
 
 
-<a name="0.0.3"></a>
 ### 0.0.3 (2014-11-30)
 
 
