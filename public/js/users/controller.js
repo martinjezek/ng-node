@@ -87,8 +87,16 @@
 
         // save user changes
         $scope.saveChanges = function () {
-            console.log('save', $scope.user);
-            $scope.changeEditableField = false;
+            var changes = {
+                name: $scope.user.name,
+                age: $scope.user.age
+            };
+            $scope.loading = true;
+            $http.put(config.api.url + '/user/' + $routeParams.userId, changes).success(function() {
+                $scope.fetchUser();
+                $scope.changeEditableField = false;
+                $scope.loading = false;
+            });
         };
 
     };
