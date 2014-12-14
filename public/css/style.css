@@ -6,6 +6,16 @@ nav.navbar-fixed-top {
     margin-bottom: 0px;
 }
 
+h1.navbar-brand {
+    margin: 0px;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 0px 0px 18px 0px;
+}
+
 .body.container {
     padding-top: 20px;
     padding-bottom: 30px;
@@ -26,6 +36,11 @@ nav.navbar-fixed-top {
 }
 
 .row.boxes {
+    margin-bottom: 10px;
+}
+
+.row.boxes h2 {
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
@@ -72,4 +87,30 @@ footer .version {
 
 .debug p {
     margin-bottom: 0px;
+}
+
+input.editable-field.ng-invalid {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+
+.addons {
+    position: relative;
+}
+
+.assign {
+    position: absolute;
+    top: -6px;
+    right: 15px;
+}
+
+ul.assigned {
+    list-style: none;
+    padding-left: 10px;
+    margin-top: -5px;
+}
+
+ul.assigned span.glyphicon {
+    cursor: pointer;
 }

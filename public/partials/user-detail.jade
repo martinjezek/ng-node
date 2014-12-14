@@ -1,0 +1,64 @@
+nav.navbar.navbar-default(role='navigation')
+    div.container
+        div.navbar-header
+            h1.navbar-brand User Detail
+div.row
+    div.col-sm-6
+        h2 Profile
+        table.table.table-striped
+            tbody
+                tr
+                    th.col-xs-6 Name
+                    td.col-xs-6
+                        editable-field(value='user.name', required)
+                tr
+                    th.col-xs-6 Age
+                    td.col-xs-6
+                        editable-field(value='user.age', required, ng-pattern='onlyNumbers')
+        div.text-right
+            button.btn.btn-default(ng-show='changeEditableField', ng-click='saveChanges()', ng-class='{disabled: activeEditableField}') Save Changes
+    div.col-sm-6.addons
+        h2 Groups
+        button.btn.btn-default.btn-sm.assign(ng-click='assignGroup()')
+            span.glyphicon.glyphicon-plus
+            = ' Assign Group'
+
+        div.alert.alert-info(ng-hide='user.groups.length || loading') User is not assigned to any group.
+
+        ul.assigned(ng-show='user.groups.length')
+            li(ng-repeat='group in user.groups')
+                span.glyphicon.glyphicon-remove(ng-click='unassignGroup(group)')
+                = ' {{group.name}}'
+
+//- Assign Group /modal/
+//-
+script(type='text/ng-template', id='/modal-assign-group.html')
+    form.form-horizontal(name='formAssignGroup', ng-submit='formAssignGroup.$valid && submit()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Assign Group
+        div.modal-body
+            div.form-group.last
+                label.control-label.col-sm-3(for='form-group') Group
+                div.col-sm-9
+                    select.form-control(ng-model='group', ng-options='group.name for group in groups track by group._id', name='group', id='form-group')
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-primary(type='submit', value='Save')
+
+//- Unassign Group /modal/
+//-
+script(type='text/ng-template', id='/modal-unassign-group.html')
+    form.form-horizontal(name='formUnassignGroup', ng-submit='submit()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Unassign Group
+        div.modal-body
+            p Are you sure to unassign #[strong {{unassign.name}}] group?
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-danger(type='submit', value='Remove')

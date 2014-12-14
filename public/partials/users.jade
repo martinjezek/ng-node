@@ -6,7 +6,7 @@ nav.navbar.navbar-default(role='navigation')
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            span.navbar-brand Users
+            h1.navbar-brand Users
         div#navbar.collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-right
                 li
@@ -29,8 +29,11 @@ table.table.table-striped(ng-show='users.length')
             td {{user.age}}
             td {{user._id}}
             td.text-right
-                button.btn.btn-xs.btn-default(ng-click='removeUser(user)')
-                    span.glyphicon.glyphicon-remove
+                div.btn-group
+                    a.btn.btn-xs.btn-default(href='/#/users/{{user._id}}')
+                        span.glyphicon.glyphicon-pencil
+                    button.btn.btn-xs.btn-default(ng-click='removeUser(user)')
+                        span.glyphicon.glyphicon-remove
 
 //- Create User /modal/
 //-
