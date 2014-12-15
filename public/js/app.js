@@ -136,4 +136,24 @@
         };
     });
 
+    // Filter By /helper/
+    // return an array of non-assigned items
+    Array.prototype.filterBy = function(property, filter) {
+        var result = [];
+
+        for (var i = 0; i < this.length; i++) {
+            var exist = false;
+            for (var x = 0; x < filter.length; x++) {
+                if (this[i][property] === filter[x][property]) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                result.push(this[i]);
+            }
+        }
+
+        return(result);
+    };
+
 })();

@@ -121,11 +121,10 @@
 
     var AssignGroupController = function (config, $scope, $http, modalInstance, $routeParams) {
         $scope.group = null;
-
         $scope.groups = [];
         $http.get(config.api.url + '/group').success(function (res) {
-            $scope.groups = res;
-            $scope.group = res[0]; // ng-hack -> to select the first item
+            $scope.groups = res.filterBy('_id', $scope.user.groups);
+            $scope.group = $scope.groups[0]; // ng-hack -> to select the first item
         });
 
         $scope.submit = function () {

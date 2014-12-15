@@ -7,7 +7,7 @@ nav.navbar.navbar-default(role='navigation')
                 span.icon-bar
                 span.icon-bar
             h1.navbar-brand Users
-        div#navbar.collapse.navbar-collapse
+        div#view-navbar.collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-right
                 li
                     a(ng-click='createUser()', href='', role='button')
@@ -19,10 +19,10 @@ div.alert.alert-info(ng-hide='users.length || loading') There is none of users.
 table.table.table-striped(ng-show='users.length')
     thead
         tr
-            th.col-xs-4 Name
-            th.col-xs-4 Age
-            th.col-xs-3 #
-            th.col-xs-1
+            th.col-xs-4.col-sm-4 Name
+            th.col-xs-2.col-sm-3 Age
+            th.col-xs-3.col-sm-3 #
+            th.col-xs-3.col-sm-2
     tbody
         tr(ng-repeat='user in users')
             td {{user.name}}
@@ -49,7 +49,7 @@ script(type='text/ng-template', id='/modal-create-user.html')
                 label.control-label.col-sm-3(for='form-name') Name
                 div.col-sm-9
                     input.form-control(ng-model='user.name', required, type='text', name='name', id='form-name', placeholder='Name')
-            div.form-group(ng-class='{"has-error": formCreateUser.age.$invalid && formCreateUser.age.$dirty || formCreateUser.age.$invalid && formCreateUser.$submitted}')
+            div.form-group.last(ng-class='{"has-error": formCreateUser.age.$invalid && formCreateUser.age.$dirty || formCreateUser.age.$invalid && formCreateUser.$submitted}')
                 label.control-label.col-sm-3(for='form-age') Age
                 div.col-sm-9
                     input.form-control(ng-model='user.age', ng-pattern='onlyNumbers', required, type='text', name='age', id='form-age', placeholder='Name')
@@ -67,7 +67,7 @@ script(type='text/ng-template', id='/modal-remove-user.html')
                 span.sr-only Close
             h4.modal-title Remove User
         div.modal-body
-            p Are you sure to remove #[strong {{remove.name}}] user?
+            p.last Are you sure to remove #[strong {{remove.name}}] user?
         div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             input.btn.btn-danger(type='submit', value='Remove')
