@@ -28,8 +28,11 @@ table.table.table-striped(ng-show='groups.length')
             td {{group.name}}
             td {{group._id}}
             td.text-right
-                button.btn.btn-xs.btn-default(ng-click='removeGroup(group)')
-                    span.glyphicon.glyphicon-remove
+                div.btn-group
+                    a.btn.btn-xs.btn-default(href='/#/groups/{{group._id}}')
+                            span.glyphicon.glyphicon-pencil
+                    button.btn.btn-xs.btn-default(ng-click='removeGroup(group)')
+                        span.glyphicon.glyphicon-remove
 
 //- Create Group /modal/
 //-

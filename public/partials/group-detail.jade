@@ -1,0 +1,60 @@
+nav.navbar.navbar-default(role='navigation')
+    div.container
+        div.navbar-header
+            h1.navbar-brand Group Detail
+div.row
+    div.col-sm-6
+        h2 Profile
+        table.table.table-striped
+            tbody
+                tr
+                    th.col-xs-6 Name
+                    td.col-xs-6
+                        editable-field(value='group.name', required)
+        div.text-right
+            button.btn.btn-default(ng-show='changeEditableField', ng-click='saveChanges()', ng-class='{disabled: activeEditableField}') Save Changes
+    div.col-sm-6.addons
+        h2 Users
+        button.btn.btn-default.btn-sm.assign(ng-click='assignUser()')
+            span.glyphicon.glyphicon-plus
+            = ' Assign User'
+
+        div.alert.alert-info(ng-hide='group.users.length || loading') Group is not assigned to any user.
+
+        ul.assigned(ng-show='group.users.length')
+            li(ng-repeat='user in group.users')
+                span.glyphicon.glyphicon-remove(ng-click='unassignUser(user)')
+                = ' {{user.name}}'
+
+//- Assign User /modal/
+//-
+script(type='text/ng-template', id='/modal-assign-user.html')
+    form.form-horizontal(name='formAssignUser', ng-submit='formAssignUser.$valid && submit()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Assign User
+        div.modal-body
+            div.form-group.last
+                label.control-label.col-sm-3(for='form-group') User
+                div.col-sm-9
+                    select.form-control(ng-model='user', ng-options='user.name for user in users track by user._id', name='user', id='form-group')
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-primary(type='submit', value='Save')
+
+//- Unassign User /modal/
+//-
+script(type='text/ng-template', id='/modal-unassign-user.html')
+    form.form-horizontal(name='formUnassignUser', ng-submit='submit()', method='post', role='form', novalidate)
+        div.modal-header
+            button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span.sr-only Close
+            h4.modal-title Unassign User
+        div.modal-body
+            p Are you sure to unassign #[strong {{unassign.name}}] user?
+        div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            input.btn.btn-danger(type='submit', value='Remove')

@@ -29,6 +29,9 @@
                 templateUrl: '/partials/groups.jade',
                 controller: 'GroupsController',
                 controllerAs: 'groups'
+            }).when('/groups/:groupId', {
+                templateUrl: '/partials/group-detail.jade',
+                controller: 'GroupDetailController'
             });
 
     }]);

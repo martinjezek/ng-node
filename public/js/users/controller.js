@@ -93,9 +93,9 @@
             };
             $scope.loading = true;
             $http.put(config.api.url + '/user/' + $routeParams.userId, changes).success(function() {
-                $scope.fetchUser();
-                $scope.changeEditableField = false;
                 $scope.loading = false;
+                $scope.changeEditableField = false;
+                $scope.fetchUser();
             });
         };
 
