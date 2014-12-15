@@ -121,8 +121,8 @@
 
         $scope.users = [];
         $http.get(config.api.url + '/user').success(function (res) {
-            $scope.users = res;
-            $scope.user = res[0]; // ng-hack -> to select the first item
+            $scope.users = res.filterBy('_id', $scope.group.users);
+            $scope.user = $scope.users[0]; // ng-hack -> to select the first item
         });
 
         $scope.submit = function () {

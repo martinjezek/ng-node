@@ -36,13 +36,14 @@ script(type='text/ng-template', id='/modal-assign-user.html')
                 span.sr-only Close
             h4.modal-title Assign User
         div.modal-body
-            div.form-group.last
+            div.alert.alert-info.last(ng-hide='users.length || loading') Group is assigned to all available users.
+            div.form-group.last(ng-show='users.length')
                 label.control-label.col-sm-3(for='form-group') User
                 div.col-sm-9
                     select.form-control(ng-model='user', ng-options='user.name for user in users track by user._id', name='user', id='form-group')
         div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            input.btn.btn-primary(type='submit', value='Save')
+            input.btn.btn-primary(ng-show='users.length', type='submit', value='Save')
 
 //- Unassign User /modal/
 //-
@@ -54,7 +55,7 @@ script(type='text/ng-template', id='/modal-unassign-user.html')
                 span.sr-only Close
             h4.modal-title Unassign User
         div.modal-body
-            p Are you sure to unassign #[strong {{unassign.name}}] user?
+            p.last Are you sure to unassign #[strong {{unassign.name}}] user?
         div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             input.btn.btn-danger(type='submit', value='Remove')

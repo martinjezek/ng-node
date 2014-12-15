@@ -1,13 +1,13 @@
 nav.navbar.navbar-default(role='navigation')
     div.container
         div.navbar-header
-            button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#view-navbar', aria-expanded='false', aria-controls='navbar')
                 span.sr-only Toggle navigation
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
             h1.navbar-brand Groups
-        div#navbar.collapse.navbar-collapse
+        div#view-navbar.collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-right
                 li
                     a(ng-click='createGroup()', href='', role='button')
@@ -19,10 +19,9 @@ div.alert.alert-info(ng-hide='groups.length || loading') There is none of groups
 table.table.table-striped(ng-show='groups.length')
     thead
         tr
-            th.col-xs-8 Name
-            th.col-xs-3 #
-            th.col-xs-1
-
+            th.col-xs-6.col-sm-7 Name
+            th.col-xs-3.col-sm-3 #
+            th.col-xs-3.col-sm-2
     tbody
         tr(ng-repeat='group in groups')
             td {{group.name}}
@@ -44,7 +43,7 @@ script(type='text/ng-template', id='/modal-create-group.html')
                 span.sr-only Close
             h4.modal-title Create Group
         div.modal-body
-            div.form-group(ng-class='{"has-error": formCreateGroup.name.$invalid && formCreateGroup.name.$dirty || formCreateGroup.name.$invalid && formCreateGroup.$submitted}')
+            div.form-group.last(ng-class='{"has-error": formCreateGroup.name.$invalid && formCreateGroup.name.$dirty || formCreateGroup.name.$invalid && formCreateGroup.$submitted}')
                 label.control-label.col-sm-3(for='form-name') Name
                 div.col-sm-9
                     input.form-control(ng-model='group.name', required, type='text', name='name', id='form-name', placeholder='Name')
@@ -62,7 +61,7 @@ script(type='text/ng-template', id='/modal-remove-group.html')
                 span.sr-only Close
             h4.modal-title Remove Group
         div.modal-body
-            p Are you sure to remove #[strong {{remove.name}}] group?
+            p.last Are you sure to remove #[strong {{remove.name}}] group?
         div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             input.btn.btn-danger(type='submit', value='Remove')

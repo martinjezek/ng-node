@@ -40,13 +40,14 @@ script(type='text/ng-template', id='/modal-assign-group.html')
                 span.sr-only Close
             h4.modal-title Assign Group
         div.modal-body
-            div.form-group.last
+            div.alert.alert-info.last(ng-hide='groups.length || loading') User is assigned to all available groups.
+            div.form-group.last(ng-show='groups.length')
                 label.control-label.col-sm-3(for='form-group') Group
                 div.col-sm-9
                     select.form-control(ng-model='group', ng-options='group.name for group in groups track by group._id', name='group', id='form-group')
         div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            input.btn.btn-primary(type='submit', value='Save')
+            input.btn.btn-primary(ng-show='groups.length', type='submit', value='Save')
 
 //- Unassign Group /modal/
 //-
@@ -58,7 +59,7 @@ script(type='text/ng-template', id='/modal-unassign-group.html')
                 span.sr-only Close
             h4.modal-title Unassign Group
         div.modal-body
-            p Are you sure to unassign #[strong {{unassign.name}}] group?
+            p.last Are you sure to unassign #[strong {{unassign.name}}] group?
         div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             input.btn.btn-danger(type='submit', value='Remove')

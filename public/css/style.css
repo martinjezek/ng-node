@@ -114,3 +114,7 @@ ul.assigned {
 ul.assigned span.glyphicon {
     cursor: pointer;
 }
+
+.modal .last {
+    margin-bottom: 0px;
+}
