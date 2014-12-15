@@ -1,3 +1,12 @@
+### 0.0.6 (2014-12-15)
+
+
+#### Features
+
+* assign just allowed users and groups and fix web responsivnes #26 ([5037fae2](git@github.com:martinjezek/ng-node/commit/5037fae28cc4927b12ed3f2fd8c9e612e67db9b4))
+* add a group detail #7 ([03936c24](git@github.com:martinjezek/ng-node/commit/03936c24fe69256dd37d26c391110074afef4622))
+
+
 ### 0.0.5 (2014-12-14)
 
 
