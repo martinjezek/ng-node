@@ -1,6 +1,6 @@
 'use strict';
 
-var app         = require('../app'),
+var app         = require('../../app'),
     request     = require('supertest'),
     should      = require('should');
 
