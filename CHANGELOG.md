@@ -1,3 +1,12 @@
+### 0.0.7 (2014-12-16)
+
+
+#### Features
+
+* add e2e tests for Groups #28 ([514fd03b](git@github.com:martinjezek/ng-node/commit/514fd03b52550d4ab4cc4564ead7e9e2bbe178e5))
+* add e2e tests for Users #28 ([3a8a7b45](git@github.com:martinjezek/ng-node/commit/3a8a7b45a489e0b70e100070d19ecbd357d0c6cc))
+
+
 ### 0.0.6 (2014-12-15)
 
 
